@@ -17,6 +17,7 @@ use Doctrine\Common\Annotations\Reader;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Loader\LoaderResolver;
+use Symfony\Component\Config\Loader\LoaderResolverInterface;
 
 /**
  * AnnotationClassLoader loads ServiceDefinition from a PHP class and its methods.
@@ -25,7 +26,7 @@ use Symfony\Component\Config\Loader\LoaderResolver;
  *
  * @author Christian Kerl <christian-kerl@web.de>
  */
-class AnnotationClassLoader implements LoaderInterface
+class AnnotationClassLoader implements LoaderResolverInterface
 {
     protected $reader;
 
@@ -185,7 +186,7 @@ class AnnotationClassLoader implements LoaderInterface
      *
      * @param LoaderResolver $resolver A LoaderResolver instance
      */
-    public function setResolver(LoaderResolver $resolver)
+    public function setResolver(LoaderResolverInterface $resolver)
     {
     }
 
@@ -196,5 +197,10 @@ class AnnotationClassLoader implements LoaderInterface
      */
     public function getResolver()
     {
+    }
+
+    public function resolve($resource, $type = null)
+    {
+
     }
 }
